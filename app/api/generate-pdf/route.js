@@ -42,8 +42,9 @@ export async function POST(request) {
       }
     });
   } catch (error) {
-    return new Response(JSON.stringify({ error: "JSON inválido o error al generar." }), {
-      status: 400,
+    console.error("Error generando PDF:", error);
+    return new Response(JSON.stringify({ error: "Error al generar el PDF." }), {
+      status: 500,
       headers: {
         "Content-Type": "application/json"
       }

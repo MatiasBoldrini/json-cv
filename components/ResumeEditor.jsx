@@ -70,7 +70,16 @@ export default function ResumeEditor() {
       });
 
       if (!response.ok) {
-        throw new Error("Error al generar PDF");
+        let errorMessage = "No se pudo generar el PDF.";
+        try {
+          const data = await response.json();
+          if (data?.error) {
+            errorMessage = data.error;
+          }
+        } catch (parseError) {
+          // Mantener mensaje por defecto si no hay JSON válido
+        }
+        throw new Error(errorMessage);
       }
 
       const blob = await response.blob();
@@ -87,7 +96,7 @@ export default function ResumeEditor() {
       window.URL.revokeObjectURL(url);
       setStatus("PDF descargado.");
     } catch (error) {
-      setStatus("No se pudo generar el PDF.");
+      setStatus(error?.message || "No se pudo generar el PDF.");
     } finally {
       setIsGenerating(false);
     }
