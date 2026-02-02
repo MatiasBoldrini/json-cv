@@ -15,20 +15,6 @@ const nextConfig = {
         "./node_modules/@sparticuz/chromium/**/*"
       ]
     }
-  },
-  webpack(config) {
-    config.module.rules.push(
-      {
-        test: /\.hbs$/,
-        type: "asset/source"
-      },
-      {
-        test: /\.css$/,
-        resourceQuery: /raw/,
-        type: "asset/source"
-      }
-    );
-    return config;
   }
 };
 
