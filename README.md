@@ -1,50 +1,11 @@
-# my-resume-theme
+# JSON-CV
 
-Tema personalizado de CV en una sola página basado en JSON Resume.
+Este proyecto es un tema que no encontré disponible en JSON Resume y por eso lo armé: necesitaba un CV de una sola página, fácil de leer por reclutadores, optimizado para ATS y con una estructura clara para editarlo sin fricción.
 
-## Uso (local)
+La gracia es que también está optimizado para que una IA pueda consultar este servicio y generar mi resumen a partir de un prompt en español, sin tener que volcar todo el JSON en el README porque eso ya vive dentro del prompt de `custom-gem-prompt.md`.
 
-1. Instalar dependencias:
+A modo de referencia, así se vería una solicitud tipo curl para interactuar con una IA y generar el resumen, sin mostrar el JSON completo:
 
-```
-npm install
-```
+curl -X POST https://cv-matias-boldrini.vercel.app/api/generate-pdf -H "Content-Type: application/json" -d @resume.json
 
-2. Levantar el editor:
-
-```
-npm run dev
-```
-
-3. Generar el PDF desde script local:
-
-```
-npm run generate
-```
-
-El archivo generado queda en `CV-matias-boldrini.pdf`.
-
-## API para PDF (Vercel)
-
-```
-POST /api/generate-pdf
-Content-Type: application/json
-```
-
-Ejemplo con curl:
-
-```
-curl -X POST https://tu-app.vercel.app/api/generate-pdf \
-  -H "Content-Type: application/json" \
-  -d @resume.json \
-  -o cv.pdf
-```
-
-El campo `basics.image` acepta URL o base64.
-
-## Archivos clave
-
-- `resume.json`: contenido del CV.
-- `resume.hbs`: template del CV.
-- `style.css`: estilos del template.
-- `generate-pdf.js`: script para generar el PDF.
+Si querés modificar el custom gem, el prompt de este se encuentra en el archivo custom-gem-prompt.md
