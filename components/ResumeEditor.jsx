@@ -135,6 +135,32 @@ export default function ResumeEditor() {
         >
           {isGenerating ? "Generando PDF..." : "Descargar PDF"}
         </button>
+        <div className="toolbarSocials">
+          <a
+            className="toolbarLink"
+            href="https://www.linkedin.com/in/mat%C3%ADas-boldrini-93b146192/"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            LinkedIn
+          </a>
+          <a
+            className="toolbarLink"
+            href="https://github.com/MatiasBoldrini/json-cv"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            GitHub
+          </a>
+          <a
+            className="toolbarLink"
+            href="https://x.com/pescalate_"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            X
+          </a>
+        </div>
         {status ? <span className="statusText">{status}</span> : null}
       </div>
 

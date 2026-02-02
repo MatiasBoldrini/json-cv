@@ -19,6 +19,14 @@ body {
   margin: 12px 0 16px 0;
 }
 
+.toolbarSocials {
+  margin-left: auto;
+  display: flex;
+  gap: 8px;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
 .toolbarButton {
   border: 1px solid #d1d5db;
   background: #fff;
@@ -27,6 +35,20 @@ body {
   font-size: 12px;
   border-radius: 6px;
   cursor: pointer;
+}
+
+.toolbarLink {
+  border: 1px solid #e5e7eb;
+  background: #f9fafb;
+  color: #111827;
+  padding: 6px 10px;
+  font-size: 12px;
+  border-radius: 6px;
+  text-decoration: none;
+}
+
+.toolbarLink:hover {
+  background: #f3f4f6;
 }
 
 .toolbarButton:disabled {
