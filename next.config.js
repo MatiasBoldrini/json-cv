@@ -12,7 +12,7 @@ const nextConfig = {
       "/api/generate-pdf": [
         "./style.css",
         "./resume.hbs",
-        "./node_modules/@sparticuz/chromium/**/*"
+        "./node_modules/@sparticuz/chromium-min/**/*"
       ]
     }
   }
