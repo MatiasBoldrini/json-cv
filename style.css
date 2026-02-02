@@ -168,6 +168,24 @@ li {
   color: #374151;
 }
 
+.contactDivider {
+  margin: 0 6px;
+  color: #d1d5db;
+}
+
+.contactLinkLabel {
+  font-size: 9px;
+  color: #6b7280;
+  margin-right: 4px;
+  text-transform: uppercase;
+  letter-spacing: 0.4px;
+}
+
+.contactLink {
+  display: inline-block;
+  min-width: 140px;
+}
+
 .contactValue a {
   color: #2563eb;
 }

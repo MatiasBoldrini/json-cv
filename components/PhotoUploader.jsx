@@ -14,29 +14,26 @@ export default function PhotoUploader({ value, onChange }) {
     reader.readAsDataURL(file);
   };
 
+  const handlePickPhoto = () => {
+    inputRef.current?.click();
+  };
+
   return (
     <div>
-      {value ? (
-        <img src={value} alt="Foto de perfil" className="photo" />
-      ) : (
-        <div className="photoHint">Sin foto</div>
-      )}
-      <div className="photoControls">
-        <button
-          type="button"
-          className="toolbarButton"
-          onClick={() => inputRef.current?.click()}
-        >
-          Cambiar foto
-        </button>
-        <input
-          ref={inputRef}
-          type="file"
-          accept="image/*"
-          hidden
-          onChange={(event) => handleFile(event.target.files?.[0])}
-        />
-      </div>
+      <button type="button" className="photoButton" onClick={handlePickPhoto}>
+        {value ? (
+          <img src={value} alt="Foto de perfil" className="photo" />
+        ) : (
+          <div className="photoHint">Sin foto</div>
+        )}
+      </button>
+      <input
+        ref={inputRef}
+        type="file"
+        accept="image/*"
+        hidden
+        onChange={(event) => handleFile(event.target.files?.[0])}
+      />
       <div className="photoHint">Acepta URL o base64 en el JSON</div>
     </div>
   );

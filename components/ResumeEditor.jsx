@@ -241,6 +241,16 @@ export default function ResumeEditor() {
                   className=""
                   tagName="span"
                 />
+                <span className="contactDivider">|</span>
+                <span className="contactLinkLabel">URL</span>
+                <EditableText
+                  value={profile.url || ""}
+                  onChange={(value) =>
+                    updateResume(["basics", "profiles", index, "url"], value)
+                  }
+                  className="contactLink"
+                  tagName="span"
+                />
               </span>
             </div>
           ))}
