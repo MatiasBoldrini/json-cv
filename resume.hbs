@@ -1,0 +1,260 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset='utf-8'>
+    <meta name='viewport' content='width=device-width, user-scalable=no, minimal-ui'>
+    <title>{{resume.basics.name}}</title>
+    <style>
+    {{{css}}}
+    </style>
+  </head>
+  <body>
+    <div id='resume'>
+      
+      {{#resume.basics}}
+      <!-- HEADER: Identidad + Descripción lado a lado -->
+      <div id='header'>
+        <!-- Columna izquierda: Foto + Nombre -->
+        <div id='headerLeft'>
+          {{#if image}}
+          <div id='photoBlock'>
+            <img src='{{image}}' alt='{{name}}' class='photo' />
+          </div>
+          {{/if}}
+          <div id='headerIdentity'>
+            <h1 class='name'>{{name}}</h1>
+            {{#if label}}
+            <div class='label'>{{label}}</div>
+            {{/if}}
+            {{#if meta}}
+            <div class='metaInfo'>
+              {{#each meta}}
+              <span class='metaItem'>{{this}}</span>
+              {{#unless @last}}<span class='metaDivider'>|</span>{{/unless}}
+              {{/each}}
+            </div>
+            {{/if}}
+          </div>
+        </div>
+
+        <!-- Columna derecha: Descripción profesional -->
+        {{#if summary}}
+        <div id='headerRight'>
+          <p class='summary'>{{summary}}</p>
+        </div>
+        {{/if}}
+      </div>
+
+      <!-- CONTACTO: Fila horizontal -->
+      <div id='contactBlock'>
+        {{#if email}}
+        <div class='contactItem'>
+          <span class='contactLabel'>Email:</span>
+          <span class='contactValue'><a href='mailto:{{email}}'>{{email}}</a></span>
+        </div>
+        {{/if}}
+        {{#if phone}}
+        <div class='contactItem'>
+          <span class='contactLabel'>Tel:</span>
+          <span class='contactValue'>{{phone}}</span>
+        </div>
+        {{/if}}
+        {{#if location}}
+        <div class='contactItem'>
+          <span class='contactLabel'>Ubicación:</span>
+          <span class='contactValue'>
+            {{#if location.city}}{{location.city}}{{/if}}{{#if location.region}}, {{location.region}}{{/if}}
+          </span>
+        </div>
+        {{/if}}
+        {{#each profiles}}
+        <div class='contactItem'>
+          <span class='contactLabel'>{{network}}:</span>
+          <span class='contactValue'><a href='{{url}}'>{{#if username}}{{username}}{{else}}Ver perfil{{/if}}</a></span>
+        </div>
+        {{/each}}
+      </div>
+      <div class='sectionLine'></div>
+      {{/resume.basics}}
+
+      <!-- EXPERIENCIA LABORAL -->
+      {{#if resume.work.length}}
+      <div id='workBlock' class="sectionBlock">
+        <div class='sectionName'>
+          <span>EXPERIENCIA LABORAL</span>
+        </div>
+        <div class='sectionContent'>
+          {{#each resume.work}}
+          <div class="jobBlock">
+            <div class='blockHeader'>
+              <span class='title'>{{position}}</span>
+              {{#if startDate}}
+              <span class='date'>
+                {{startDate}} — {{#if endDate}}{{endDate}}{{else}}Actualidad{{/if}}
+              </span>
+              {{/if}}
+            </div>
+            <div class='company'>{{name}}</div>
+            {{#if highlights.length}}
+            <ul class='highlights'>
+              {{#each highlights}}
+              <li>{{.}}</li>
+              {{/each}}
+            </ul>
+            {{/if}}
+            {{#unless @last}}<div class='separator'></div>{{/unless}}
+          </div>
+          {{/each}}
+        </div>
+      </div>
+      <div class='sectionLine'></div>
+      {{/if}}
+
+      <!-- FORMACIÓN ACADÉMICA -->
+      {{#if resume.education.length}}
+      <div id='education' class="sectionBlock">
+        <div class='sectionName'>
+          <span>FORMACIÓN ACADÉMICA</span>
+        </div>
+        <div class='sectionContent'>
+          {{#each resume.education}}
+          <div class='educationBlock'>
+            <div class='blockHeader'>
+              <span class='title'>{{#if studyType}}{{studyType}} - {{/if}}{{area}}</span>
+              {{#if startDate}}
+              <span class='date'>
+                {{startDate}} — {{#if endDate}}{{endDate}}{{else}}Actualidad{{/if}}
+              </span>
+              {{/if}}
+            </div>
+            <div class='institution'>{{institution}}</div>
+            {{#if score}}<div class='score'>{{score}}</div>{{/if}}
+          </div>
+          {{#unless @last}}<div class='separator'></div>{{/unless}}
+          {{/each}}
+        </div>
+      </div>
+      <div class='sectionLine'></div>
+      {{/if}}
+
+      <!-- CERTIFICACIONES -->
+      {{#if resume.certificates.length}}
+      <div id='certificates' class="sectionBlock">
+        <div class='sectionName'>
+          <span>CERTIFICACIONES</span>
+        </div>
+        <div class='sectionContent'>
+          {{#each resume.certificates}}
+          <div class='certBlock'>
+            <span class='title'>{{name}}</span>
+            {{#if date}}<span class='date'>{{date}}</span>{{/if}}
+            {{#if issuer}}<div class='issuer'>{{issuer}}</div>{{/if}}
+          </div>
+          {{#unless @last}}<div class='separator'></div>{{/unless}}
+          {{/each}}
+        </div>
+      </div>
+      <div class='sectionLine'></div>
+      {{/if}}
+
+      <!-- CONOCIMIENTOS TÉCNICOS -->
+      {{#if resume.skills.length}}
+      <div id='skills' class="sectionBlock">
+        <div class='sectionName'>
+          <span>CONOCIMIENTOS</span>
+        </div>
+        <div class='sectionContent'>
+          {{#each resume.skills}}
+          <div class='skillBlock'>
+            <span class='skillName'>{{name}}{{#if level}} <em>({{level}})</em>{{/if}}:</span>
+            {{#if keywords.length}}
+            <span class='skillKeywords'>
+              {{#each keywords}}{{.}}{{#unless @last}}, {{/unless}}{{/each}}
+            </span>
+            {{/if}}
+          </div>
+          {{/each}}
+        </div>
+      </div>
+      <div class='sectionLine'></div>
+      {{/if}}
+
+      <!-- IDIOMAS -->
+      {{#if resume.languages.length}}
+      <div id='languages' class="sectionBlock">
+        <div class='sectionName'>
+          <span>IDIOMAS</span>
+        </div>
+        <div class='sectionContent'>
+          {{#each resume.languages}}
+          <span class='language'>{{language}}</span>
+          {{#if fluency}}<span class='fluency'>({{fluency}})</span>{{/if}}
+          {{#unless @last}}<span class='langDivider'> | </span>{{/unless}}
+          {{/each}}
+        </div>
+      </div>
+      <div class='sectionLine'></div>
+      {{/if}}
+
+      <!-- COMUNIDAD / VOLUNTARIADO -->
+      {{#if resume.volunteer.length}}
+      <div id='volunteer' class="sectionBlock">
+        <div class='sectionName'>
+          <span>COMUNIDAD</span>
+        </div>
+        <div class='sectionContent'>
+          {{#each resume.volunteer}}
+          <div class='volunteerBlock'>
+            <div class='blockHeader'>
+              <span class='title'>{{position}}</span>
+              {{#if startDate}}
+              <span class='date'>{{startDate}} — {{#if endDate}}{{endDate}}{{else}}Actualidad{{/if}}</span>
+              {{/if}}
+            </div>
+            <div class='organization'>{{organization}}</div>
+            {{#if summary}}<div class='volunteerSummary'>{{summary}}</div>{{/if}}
+          </div>
+          {{#unless @last}}<div class='separator'></div>{{/unless}}
+          {{/each}}
+        </div>
+      </div>
+      <div class='sectionLine'></div>
+      {{/if}}
+
+      <!-- PROYECTOS -->
+      {{#if resume.projects.length}}
+      <div id='projects' class="sectionBlock">
+        <div class='sectionName'>
+          <span>PROYECTOS</span>
+        </div>
+        <div class='sectionContent'>
+          {{#each resume.projects}}
+          <div class='projectBlock'>
+            <div class='blockHeader'>
+              <span class='title'>{{name}}</span>
+              {{#if startDate}}<span class='date'>{{startDate}}{{#if endDate}} — {{endDate}}{{/if}}</span>{{/if}}
+            </div>
+            {{#if url}}<div class='projectUrl'><a href='{{url}}'>{{url}}</a></div>{{/if}}
+            {{#if description}}<div class='projectDesc'>{{description}}</div>{{/if}}
+            {{#if highlights.length}}
+            <ul class='highlights'>
+              {{#each highlights}}
+              <li>{{.}}</li>
+              {{/each}}
+            </ul>
+            {{/if}}
+            {{#if keywords.length}}
+            <div class='projectTech'>
+              {{#each keywords}}{{.}}{{#unless @last}}, {{/unless}}{{/each}}
+            </div>
+            {{/if}}
+          </div>
+          {{#unless @last}}<div class='separator'></div>{{/unless}}
+          {{/each}}
+        </div>
+      </div>
+      {{/if}}
+
+    </div>
+  </body>
+</html>

@@ -1,0 +1,164 @@
+{
+  "$schema": "https://raw.githubusercontent.com/jsonresume/resume-schema/v1.0.0/schema.json",
+  "basics": {
+    "name": "Matias Boldrini",
+    "label": "Product Engineer | IA & Blockchain",
+    "image": "https://github.com/MatiasBoldrini.png",
+    "email": "matiboldrini7811@gmail.com",
+    "phone": "(+54) 261 344 9543",
+    "url": "",
+    "summary": "Ingeniero en formación con foco en IA aplicada y desarrollo de productos end-to-end. Construyo herramientas, agentes y automatizaciones que reducen carga operativa y escalan procesos.",
+    "meta": ["23 años", "Disponibilidad Full Time"],
+    "profiles": [
+      {
+        "network": "GitHub",
+        "username": "MatiasBoldrini",
+        "url": "https://github.com/MatiasBoldrini"
+      },
+      {
+        "network": "LinkedIn",
+        "username": "matías-boldrini",
+        "url": "https://www.linkedin.com/in/mat%C3%ADas-boldrini-93b146192/"
+      }
+    ]
+  },
+  "work": [
+    {
+      "name": "Nerdconf",
+      "position": "Product Engineer",
+      "url": "",
+      "startDate": "Ago 2025",
+      "endDate": null,
+      "summary": "",
+      "highlights": [
+        "Estuve a cargo del desarrollo integral de la web app para la hackathon LatinHack, implementando dashboards con KPIs en tiempo real y features de gamificación para conectar a más de 1000 usuarios",
+        "Diseñé agentes de IA y flujos automatizados (Zapier, Amazon SES) para optimizar el registro, la comunicación y las operaciones del evento",
+        "Ejecuté campañas de email a escala y pipelines de scraping avanzado (Python) para la generación de leads y extracción de datos"
+      ]
+    },
+    {
+      "name": "Technovation",
+      "position": "Programador Full Stack",
+      "url": "",
+      "startDate": "Jun 2024",
+      "endDate": "Jul 2025",
+      "summary": "",
+      "highlights": [
+        "Diseño y desarrollo completo de sitios web (faroandes.com) y aplicaciones móviles en AppSheet",
+        "Integración de IA Operativa: Creación de herramientas internas basadas en IA (LangChain, n8n)",
+        "Creación de Contenido Digital: Dirección y producción audiovisual (drones, fotografía) para campañas de marca en Instagram"
+      ]
+    },
+    {
+      "name": "Freelance (Market Rider)",
+      "position": "Desarrollador",
+      "url": "",
+      "startDate": "2020",
+      "endDate": "2022",
+      "summary": "",
+      "highlights": [
+        "Diseño y desarrollo de indicadores personalizados en TradingView para clientes y marca propia (Market Rider)",
+        "Análisis estadístico descriptivo con métricas de rendimiento"
+      ]
+    }
+  ],
+  "volunteer": [
+    {
+      "organization": "Cursor Community",
+      "position": "Mendoza Ambassador",
+      "url": "",
+      "startDate": "2025",
+      "endDate": null,
+      "summary": "Charlas, talleres y capacitaciones para desarrolladores"
+    },
+    {
+      "organization": "CuyoConnect",
+      "position": "Cofundador",
+      "url": "",
+      "startDate": "2025",
+      "endDate": null,
+      "summary": "Comunidad tech local"
+    }
+  ],
+  "education": [
+    {
+      "institution": "Universidad de Mendoza",
+      "url": "",
+      "area": "Ingeniería Informática",
+      "studyType": "",
+      "startDate": "2021",
+      "endDate": null,
+      "score": "En curso",
+      "courses": []
+    },
+    {
+      "institution": "A.M.I.C.A.N.A",
+      "url": "",
+      "area": "Advanced English Diploma (C1)",
+      "studyType": "",
+      "startDate": "2020",
+      "endDate": "2020",
+      "score": "",
+      "courses": []
+    },
+    {
+      "institution": "Tomás Alva Edison",
+      "url": "",
+      "area": "Bachillerato en Informática",
+      "studyType": "",
+      "startDate": "",
+      "endDate": "",
+      "score": "",
+      "courses": []
+    }
+  ],
+  "certificates": [],
+  "skills": [
+    {
+      "name": "Backend & Datos",
+      "level": "",
+      "keywords": ["Python", "Flask", "SQL Server", "MySQL", "PostgreSQL", "MongoDB", "Supabase"]
+    },
+    {
+      "name": "Frontend",
+      "level": "",
+      "keywords": ["React", "Angular", "HTML/CSS"]
+    },
+    {
+      "name": "IA y Automatización",
+      "level": "",
+      "keywords": ["LangChain", "n8n", "Zapier", "AppSheet"]
+    },
+    {
+      "name": "Cloud & DevOps",
+      "level": "",
+      "keywords": ["Google Cloud", "AWS SES", "Vercel", "Git"]
+    },
+    {
+      "name": "Blockchain",
+      "level": "",
+      "keywords": ["Stellar Network", "Soroban"]
+    },
+    {
+      "name": "Datos & Analytics",
+      "level": "",
+      "keywords": ["Web Scraping", "ETL", "Arquitectura de datos", "Excel", "Estadísticas"]
+    },
+    {
+      "name": "Metodologías",
+      "level": "",
+      "keywords": ["Scrum", "TDD"]
+    }
+  ],
+  "languages": [
+    {
+      "language": "Español",
+      "fluency": "Nativo"
+    },
+    {
+      "language": "Inglés",
+      "fluency": "Avanzado (C1)"
+    }
+  ],
+  "projects": []
+}
