@@ -1,4 +1,11 @@
-const puppeteer = require('puppeteer');
+let puppeteer = null;
+let chromium = null;
+try {
+  puppeteer = require('puppeteer');
+} catch (error) {
+  puppeteer = require('puppeteer-core');
+  chromium = require('@sparticuz/chromium');
+}
 const theme = require('./index.js');
 const resume = require('./resume.json');
 const fs = require('fs');
@@ -11,10 +18,18 @@ async function generatePDF() {
   fs.writeFileSync(htmlPath, html);
 
   console.log('Iniciando Chrome...');
-  const browser = await puppeteer.launch({
-    headless: 'new',
-    args: ['--no-sandbox', '--disable-setuid-sandbox']
-  });
+  const launchOptions = chromium
+    ? {
+      args: chromium.args,
+      executablePath: await chromium.executablePath(),
+      headless: chromium.headless
+    }
+    : {
+      headless: 'new',
+      args: ['--no-sandbox', '--disable-setuid-sandbox']
+    };
+
+  const browser = await puppeteer.launch(launchOptions);
 
   const page = await browser.newPage();
 
