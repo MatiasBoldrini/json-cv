@@ -39,23 +39,85 @@ body {
   color: #6b7280;
 }
 
-.jsonPanel {
-  border: 1px solid #e5e7eb;
-  background: #fff;
-  padding: 10px;
-  border-radius: 8px;
-  margin-bottom: 16px;
+.jsonModalOverlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(15, 23, 42, 0.55);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 24px;
+  z-index: 40;
 }
 
-.jsonPanel textarea {
+.jsonModal {
+  width: min(860px, 96vw);
+  background: #ffffff;
+  border-radius: 16px;
+  border: 1px solid #e5e7eb;
+  box-shadow: 0 20px 60px rgba(15, 23, 42, 0.25);
+  display: flex;
+  flex-direction: column;
+  max-height: min(80vh, 780px);
+}
+
+.jsonModalHeader {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 16px 18px 10px 18px;
+  border-bottom: 1px solid #e5e7eb;
+}
+
+.jsonModalTitle {
+  font-size: 14px;
+  font-weight: 600;
+  color: #111827;
+}
+
+.jsonModalClose {
+  background: transparent;
+  border: none;
+  font-size: 20px;
+  color: #6b7280;
+  cursor: pointer;
+}
+
+.jsonModalBody {
+  padding: 14px 18px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  flex: 1;
+}
+
+.jsonModalBody textarea {
   width: 100%;
-  min-height: 140px;
+  min-height: 320px;
+  flex: 1;
+  resize: vertical;
   font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono",
     "Courier New", monospace;
   font-size: 11px;
   border: 1px solid #e5e7eb;
-  border-radius: 6px;
-  padding: 8px;
+  border-radius: 10px;
+  padding: 12px;
+  background: #f8fafc;
+}
+
+.jsonModalFooter {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 12px 18px 16px 18px;
+  border-top: 1px solid #e5e7eb;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.jsonModalActions {
+  display: flex;
+  gap: 8px;
 }
 
 .jsonError {

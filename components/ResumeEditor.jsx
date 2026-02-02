@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useMemo, useState } from "react";
 import EditableText from "./EditableText";
 import PhotoUploader from "./PhotoUploader";
 import JSONImporter from "./JSONImporter";
@@ -36,6 +36,10 @@ function setIn(obj, path, value) {
 }
 
 export default function ResumeEditor() {
+  const defaultResumeJson = useMemo(
+    () => JSON.stringify(getDefaultResume(), null, 2),
+    []
+  );
   const [resume, setResume] = useState(() => normalizeResume(getDefaultResume()));
   const [labels, setLabels] = useState(DEFAULT_LABELS);
   const [status, setStatus] = useState("");
@@ -109,7 +113,7 @@ export default function ResumeEditor() {
   return (
     <div>
       <div className="toolbar">
-        <JSONImporter onImport={handleImportJson} />
+        <JSONImporter onImport={handleImportJson} initialValue={defaultResumeJson} />
         <button
           type="button"
           className="toolbarButton"

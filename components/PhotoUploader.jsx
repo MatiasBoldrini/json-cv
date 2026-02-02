@@ -34,7 +34,6 @@ export default function PhotoUploader({ value, onChange }) {
         hidden
         onChange={(event) => handleFile(event.target.files?.[0])}
       />
-      <div className="photoHint">Acepta URL o base64 en el JSON</div>
     </div>
   );
 }
