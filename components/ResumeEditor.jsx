@@ -117,6 +117,19 @@ export default function ResumeEditor() {
         <button
           type="button"
           className="toolbarButton"
+          onClick={() =>
+            window.open(
+              "https://gemini.google.com/gem/1nSoW4yyo4gnaeIa-BYam1VyO7rSgDdc3?usp=sharing",
+              "_blank",
+              "noopener,noreferrer"
+            )
+          }
+        >
+          Importar mi CV con IA
+        </button>
+        <button
+          type="button"
+          className="toolbarButton"
           onClick={handleGeneratePdf}
           disabled={isGenerating}
         >
