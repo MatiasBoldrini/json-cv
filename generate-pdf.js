@@ -30,11 +30,11 @@ function imageToBase64(imagePath) {
 async function generatePDF() {
   console.log('Generando HTML...');
 
-  // Establecer imagen por defecto si no existe
+  // Establecer imagen por defecto si no existe o está vacía
   if (!resume.basics) {
     resume.basics = {};
   }
-  if (!resume.basics.image) {
+  if (!resume.basics.image || resume.basics.image.trim() === "") {
     resume.basics.image = 'public/profile_pic.jpg';
   }
 
