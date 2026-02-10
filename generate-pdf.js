@@ -13,13 +13,34 @@ const path = require('path');
 
 function imageToBase64(imagePath) {
   try {
-    if (fs.existsSync(imagePath)) {
-      const imageBuffer = fs.readFileSync(imagePath);
-      const ext = path.extname(imagePath).toLowerCase();
-      const mimeType = ext === '.png' ? 'image/png' :
-        ext === '.jpg' || ext === '.jpeg' ? 'image/jpeg' :
-          ext === '.gif' ? 'image/gif' : 'image/jpeg';
-      return `data:${mimeType};base64,${imageBuffer.toString('base64')}`;
+    const normalizedPath = imagePath.startsWith("/")
+      ? imagePath.slice(1)
+      : imagePath;
+    const publicRelativePath = normalizedPath.startsWith("public/")
+      ? normalizedPath
+      : path.join("public", normalizedPath);
+    const ext = path.extname(normalizedPath).toLowerCase();
+    const mimeType = ext === ".png"
+      ? "image/png"
+      : ext === ".jpg" || ext === ".jpeg"
+        ? "image/jpeg"
+        : ext === ".gif"
+          ? "image/gif"
+          : "image/jpeg";
+
+    const candidatePaths = [
+      path.join(process.cwd(), normalizedPath),
+      path.join(process.cwd(), publicRelativePath),
+      path.join(__dirname, normalizedPath),
+      path.join(__dirname, publicRelativePath),
+      imagePath
+    ];
+
+    for (const candidatePath of candidatePaths) {
+      if (fs.existsSync(candidatePath)) {
+        const imageBuffer = fs.readFileSync(candidatePath);
+        return `data:${mimeType};base64,${imageBuffer.toString("base64")}`;
+      }
     }
   } catch (error) {
     console.error(`Error convirtiendo imagen a base64: ${imagePath}`, error);
@@ -35,7 +56,7 @@ async function generatePDF() {
     resume.basics = {};
   }
   if (!resume.basics.image || resume.basics.image.trim() === "") {
-    resume.basics.image = 'public/profile_pic.jpg';
+    resume.basics.image = '/profile_pic.jpg';
   }
 
   // Convertir imagen local a base64 si no es una URL

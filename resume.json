@@ -2,8 +2,8 @@
   "$schema": "https://raw.githubusercontent.com/jsonresume/resume-schema/v1.0.0/schema.json",
   "basics": {
     "name": "Matias Boldrini",
-    "label": "Product Engineer | IA & Blockchain",
-    "image": "",
+    "label": "Product Engineer | IA y Desarrollo de Producto",
+    "image": "/profile_pic.jpg",
     "email": "matiboldrini7811@gmail.com",
     "phone": "(+54) 261 344 9543",
     "url": "",
@@ -26,11 +26,12 @@
     {
       "name": "Nerdconf",
       "position": "Product Engineer",
-      "url": "",
+      "url": "https://www.nerdconf.com/",
       "startDate": "Ago 2025",
       "endDate": null,
       "summary": "",
       "highlights": [
+        "Desarrollé la web oficial de Nerdconf (https://www.nerdconf.com/)",
         "Estuve a cargo del desarrollo integral de la web app para la hackathon LatinHack, implementando dashboards con KPIs en tiempo real y features de gamificación para conectar a más de 1000 usuarios",
         "Diseñé agentes de IA y flujos automatizados (Zapier, Amazon SES) para optimizar el registro, la comunicación y las operaciones del evento",
         "Ejecuté campañas de email a escala y pipelines de scraping avanzado (Python) para la generación de leads y extracción de datos"
@@ -135,9 +136,9 @@
       "keywords": ["Google Cloud", "AWS SES", "Vercel", "Git"]
     },
     {
-      "name": "Blockchain",
+      "name": "Producto Digital",
       "level": "",
-      "keywords": ["Stellar Network", "Soroban"]
+      "keywords": ["Discovery", "KPIs de producto", "Automatización de procesos", "Roadmaps"]
     },
     {
       "name": "Datos & Analytics",
