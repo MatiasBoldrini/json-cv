@@ -2,12 +2,12 @@
   "$schema": "https://raw.githubusercontent.com/jsonresume/resume-schema/v1.0.0/schema.json",
   "basics": {
     "name": "Matias Boldrini",
-    "label": "Product Engineer | IA y Desarrollo de Producto",
+    "label": "Product Engineer | IA & Automatización",
     "image": "/profile_pic.jpg",
     "email": "matiboldrini7811@gmail.com",
     "phone": "(+54) 261 344 9543",
     "url": "",
-    "summary": "Ingeniero en formación, desarrollo y diseño productos digitales end to end. Integro IA generativa y automatizaciones en procesos productivos y empresariales.",
+    "summary": "Estudiante de Ingeniería Informática. Desarrollo y diseño productos digitales end-to-end integrando IA generativa y automatizaciones en procesos productivos y empresariales.",
     "meta": ["23 años", "Disponibilidad Full Time"],
     "profiles": [
       {
@@ -31,7 +31,7 @@
       "endDate": null,
       "summary": "",
       "highlights": [
-        "Desarrollé la web oficial de Nerdconf (https://www.nerdconf.com/)",
+        "Desarrollé la web oficial de Nerdconf",
         "Estuve a cargo del desarrollo integral de la web app para la hackathon LatinHack, implementando dashboards con KPIs en tiempo real y features de gamificación para conectar a más de 1000 usuarios",
         "Diseñé agentes de IA y flujos automatizados (Zapier, Amazon SES) para optimizar el registro, la comunicación y las operaciones del evento",
         "Ejecuté campañas de email a escala y pipelines de scraping avanzado (Python) para la generación de leads y extracción de datos"
@@ -45,9 +45,9 @@
       "endDate": "Jul 2025",
       "summary": "",
       "highlights": [
-        "Diseño y desarrollo completo de sitios web (faroandes.com) y aplicaciones móviles en AppSheet",
-        "Integración de IA Operativa: Creación de herramientas internas basadas en IA (LangChain, n8n)",
-        "Creación de Contenido Digital: Dirección y producción audiovisual (drones, fotografía) para campañas de marca en Instagram"
+        "Diseñé y desarrollé sitios web (faroandes.com) y aplicaciones móviles en AppSheet",
+        "Creé herramientas internas con IA (LangChain, n8n) para automatizar procesos de contratación, facturación y gestión operativa",
+        "Dirigí producción audiovisual (drones, fotografía) para campañas de marca en Instagram"
       ]
     },
     {
