@@ -2,6 +2,7 @@ node_modules/
 .vscode/
 .DS_Store
 temp-resume.html
+_tmp_gen_pdf.js
 *.pdf
 *.html
 
