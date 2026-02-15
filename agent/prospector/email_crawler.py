@@ -167,6 +167,49 @@ def crawl_emails_from_website(url: str, max_pages: int = 10) -> list[dict]:
     return list(found_emails.values())
 
 
+def crawl_emails_with_library(url: str) -> list[dict]:
+    """
+    Crawlea emails usando la librería extract-emails como complemento.
+    Más robusto que el crawler manual para sitios con JavaScript pesado.
+
+    Args:
+        url: URL base del sitio web
+
+    Returns:
+        Lista de dicts {email, type, source_page, verified}
+    """
+    if not url or not url.startswith("http"):
+        return []
+
+    try:
+        from extract_emails import DefaultWorker
+        from extract_emails.browsers import HttpxBrowser
+
+        with HttpxBrowser() as browser:
+            worker = DefaultWorker(url, browser, depth=5, max_links_from_page=10)
+            data = worker.get_data()
+
+        found = []
+        for page_data in data:
+            page_url = getattr(page_data, "page_url", url)
+            emails_list = page_data.data.get("email", []) if hasattr(page_data, "data") else []
+            for email in emails_list:
+                email = str(email).lower().strip()
+                if _is_valid_email(email):
+                    found.append({
+                        "email": email,
+                        "type": _classify_email(email),
+                        "source_page": str(page_url),
+                        "verified": False,
+                    })
+
+        return found
+
+    except Exception as e:
+        log.warning(f"extract-emails falló para {url}: {e}")
+        return []
+
+
 def enrich_with_hunter(domain: str) -> list[dict]:
     """
     Usa Hunter.io API para encontrar emails adicionales del dominio.
@@ -231,10 +274,17 @@ def crawl_company_emails(company: dict) -> list[dict]:
 
     all_emails = {}
 
-    # 1. Crawl del website
+    # 1. Crawl del website (método manual rápido)
     website_emails = crawl_emails_from_website(url)
     for e in website_emails:
         all_emails[e["email"]] = e
+
+    # 1b. Complementar con extract-emails library si encontramos pocos
+    if len(all_emails) < 2:
+        lib_emails = crawl_emails_with_library(url)
+        for e in lib_emails:
+            if e["email"] not in all_emails:
+                all_emails[e["email"]] = e
 
     # 2. Enriquecer con Hunter.io si hay key
     domain = urlparse(url).netloc.lower().replace("www.", "")

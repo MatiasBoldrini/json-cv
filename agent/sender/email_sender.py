@@ -3,7 +3,6 @@ Envío de emails via Resend API.
 Soporta adjuntos (PDF del CV) y rate limiting.
 """
 
-import base64
 import random
 import time
 from pathlib import Path
@@ -75,13 +74,11 @@ def send_email(
 
         # Adjuntar PDF si existe
         if attachment_path and attachment_path.exists():
-            with open(attachment_path, "rb") as f:
-                file_content = f.read()
-
             params["attachments"] = [
                 {
                     "filename": attachment_name,
-                    "content": list(file_content),
+                    "path": str(attachment_path.absolute()),
+                    "content_type": "application/pdf",
                 }
             ]
 
