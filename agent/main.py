@@ -92,13 +92,13 @@ def record_application(
 
 def run_apply_pipeline(args):
     """Pipeline completo para aplicar en portales."""
+    import asyncio
     from agent.scraper.job_scraper import (
         scrape_jobs, filter_jobs_by_relevance, save_jobs, load_jobs,
     )
     from agent.ai.cv_adapter import adapt_cv_for_job
     from agent.pdf.generator import generate_pdf
     from agent.applier.agent import apply_to_job
-    import asyncio
 
     applications = load_applications()
 
@@ -122,28 +122,23 @@ def run_apply_pipeline(args):
         log.warning("Ninguna oferta pasó el filtro de relevancia. Terminando.")
         return
 
-    # 3. Procesar cada job
+    # 3. Preparar jobs: adaptar CV + generar PDF (sync)
     max_apps = args.max or MAX_APPLICATIONS_PER_RUN
-    processed = 0
+    jobs_to_apply = []
 
     for job in relevant_jobs:
-        if processed >= max_apps:
-            log.info(f"Límite de {max_apps} aplicaciones alcanzado.")
+        if len(jobs_to_apply) >= max_apps:
             break
 
-        # Anti-duplicados
         if is_already_processed(job["url"], applications):
             log.info(f"Ya aplicado: {job['title']} @ {job['company']}, saltando.")
             continue
 
         log.info(f"\n{'═' * 60}")
-        log.info(f"APLICACIÓN {processed + 1}: {job['title']} @ {job['company']}")
+        log.info(f"PREPARANDO: {job['title']} @ {job['company']}")
         log.info(f"{'═' * 60}")
 
-        # 3a. Adaptar CV
         adapted_cv = adapt_cv_for_job(job)
-
-        # 3b. Generar PDF
         pdf_path = generate_pdf(adapted_cv, job["company"])
         if not pdf_path:
             record_application(
@@ -152,33 +147,46 @@ def run_apply_pipeline(args):
             )
             continue
 
-        # 3c. Aplicar con browser-use
-        success = asyncio.run(
-            apply_to_job(
+        jobs_to_apply.append({"job": job, "pdf_path": pdf_path})
+
+    if not jobs_to_apply:
+        log.warning("No hay jobs listos para aplicar.")
+        return
+
+    # 4. Aplicar con browser-use (async, un solo event loop)
+    async def _apply_all():
+        for i, item in enumerate(jobs_to_apply):
+            job = item["job"]
+            pdf_path = item["pdf_path"]
+
+            log.info(f"\n{'═' * 60}")
+            log.info(f"APLICACIÓN {i + 1}/{len(jobs_to_apply)}: {job['title']} @ {job['company']}")
+            log.info(f"{'═' * 60}")
+
+            success = await apply_to_job(
                 job=job,
                 pdf_path=pdf_path,
                 headless=not args.headed,
                 confirm=args.confirm,
                 dry_run=args.dry_run,
             )
-        )
 
-        action = "applied" if success else "failed"
-        if args.dry_run:
-            action = "dry_run"
+            action = "applied" if success else "failed"
+            if args.dry_run:
+                action = "dry_run"
 
-        record_application(
-            applications, "job_apply", f"{job['title']} @ {job['company']}",
-            job["url"], action,
-        )
+            record_application(
+                applications, "job_apply", f"{job['title']} @ {job['company']}",
+                job["url"], action,
+            )
 
-        processed += 1
+            # Delay entre aplicaciones
+            if i < len(jobs_to_apply) - 1:
+                delay = random.uniform(*DELAY_BETWEEN_APPLICATIONS)
+                log.info(f"Esperando {delay:.0f}s...")
+                await asyncio.sleep(delay)
 
-        # Delay entre aplicaciones
-        if processed < max_apps:
-            delay = random.uniform(*DELAY_BETWEEN_APPLICATIONS)
-            log.info(f"Esperando {delay:.0f}s...")
-            time.sleep(delay)
+    asyncio.run(_apply_all())
 
 
 # ═══════════════════════════════════════════════

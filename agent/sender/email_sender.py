@@ -184,7 +184,8 @@ def send_prospect_emails(
     sent_to = []
 
     # Enviar a los primeros 3 emails (no spam masivo)
-    for email_data in company_emails[:3]:
+    emails_to_send = company_emails[:3]
+    for i, email_data in enumerate(emails_to_send):
         email_addr = email_data if isinstance(email_data, str) else email_data.get("email", "")
         if not email_addr:
             continue
@@ -203,7 +204,7 @@ def send_prospect_emails(
             sent_to.append(email_addr)
 
         # Delay entre emails
-        if company_emails.index(email_data) < len(company_emails) - 1:
+        if i < len(emails_to_send) - 1:
             delay = random.uniform(*DELAY_BETWEEN_EMAILS)
             time.sleep(delay)
 
