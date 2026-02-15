@@ -508,11 +508,16 @@ def main():
             run_prospect_pipeline(args)
 
         elif args.mode == "full":
+            # En modo full, apply y email comparten el scrape de jobs
+            # Después de apply, email usa los jobs cacheados
             log.info("━━━ FASE 1: APPLY (portales) ━━━")
             run_apply_pipeline(args)
 
             log.info("\n━━━ FASE 2: EMAIL (cold emails a listings) ━━━")
-            run_email_pipeline(args)
+            # Reusar jobs scrapeados en fase 1
+            args_email = argparse.Namespace(**vars(args))
+            args_email.skip_scrape = True
+            run_email_pipeline(args_email)
 
             log.info("\n━━━ FASE 3: PROSPECT (deep research Mendoza) ━━━")
             run_prospect_pipeline(args)
