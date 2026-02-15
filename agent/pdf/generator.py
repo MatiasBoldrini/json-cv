@@ -139,14 +139,11 @@ def generate_pdf(
             json.dump(adapted_resume, tmp, ensure_ascii=False, indent=2)
             tmp_resume_path = tmp.name
 
-        # Escribir el script Node.js a un archivo temporal
-        with tempfile.NamedTemporaryFile(
-            mode='w', suffix='.js', delete=False, encoding='utf-8'
-        ) as tmp:
-            tmp.write(_NODE_SCRIPT)
-            tmp_script_path = tmp.name
+        # Escribir el script Node.js dentro del proyecto (para que encuentre node_modules)
+        tmp_script_path = str(PROJECT_ROOT / "_tmp_gen_pdf.js")
+        Path(tmp_script_path).write_text(_NODE_SCRIPT, encoding="utf-8")
 
-        # Ejecutar el script Node.js
+        # Ejecutar el script Node.js desde la raíz del proyecto
         result = subprocess.run(
             [
                 "node", tmp_script_path,
