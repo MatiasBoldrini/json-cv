@@ -1,0 +1,141 @@
+{
+  "directories": [
+    {
+      "name": "Polo TIC Mendoza",
+      "url": "https://poloticmendoza.org/pages/socios.php",
+      "type": "member_directory"
+    },
+    {
+      "name": "Catálogo Competitividad Mendoza",
+      "url": "https://competitividadmendoza.com.ar/agencia-innovacion/catalogo-empresas/",
+      "type": "tech_catalog"
+    },
+    {
+      "name": "Chacras Park",
+      "url": "https://chacraspark.com/",
+      "type": "tech_park"
+    }
+  ],
+  "known_companies": [
+    {
+      "name": "Accenture Mendoza",
+      "url": "https://www.accenture.com/ar-es",
+      "sector": "consulting/technology",
+      "location": "Chacras Park, Mendoza"
+    },
+    {
+      "name": "Aconcagua Software Factory",
+      "url": "https://www.aconcaguasf.com",
+      "sector": "software_development",
+      "location": "Mendoza"
+    },
+    {
+      "name": "Key Sistemas",
+      "url": "https://keysistemas.com",
+      "sector": "software_development",
+      "location": "San Martín, Mendoza"
+    },
+    {
+      "name": "PRONET OL",
+      "url": "https://estudiopronet.com",
+      "sector": "software_development",
+      "location": "Mendoza"
+    },
+    {
+      "name": "Razortech",
+      "url": "https://razortech.com.ar",
+      "sector": "software_development",
+      "location": "Mendoza"
+    },
+    {
+      "name": "Artia",
+      "url": "https://artia.com.ar",
+      "sector": "software_development",
+      "location": "Mendoza"
+    },
+    {
+      "name": "Electrosof",
+      "url": "https://electrosof.com",
+      "sector": "software_development",
+      "location": "Mendoza"
+    },
+    {
+      "name": "ITC Soluciones",
+      "url": "https://itcsoluciones.com",
+      "sector": "it_services",
+      "location": "Mendoza"
+    },
+    {
+      "name": "Tiemposoft",
+      "url": "https://tiemposoft.com",
+      "sector": "software_development",
+      "location": "Mendoza"
+    },
+    {
+      "name": "Softnuvo",
+      "url": "https://softnuvo.com",
+      "sector": "software_development",
+      "location": "Mendoza"
+    },
+    {
+      "name": "devFactory",
+      "url": "https://devfactory.com.ar",
+      "sector": "software_development",
+      "location": "Mendoza"
+    },
+    {
+      "name": "Grupo Valuar",
+      "url": "https://grupovaluar.com",
+      "sector": "software/consulting",
+      "location": "Mendoza"
+    },
+    {
+      "name": "R1 Consulting Group",
+      "url": "https://r1cg.com",
+      "sector": "consulting/software",
+      "location": "Mendoza"
+    },
+    {
+      "name": "SoftMendoza",
+      "url": "https://softmendoza.com",
+      "sector": "software_development",
+      "location": "Mendoza"
+    },
+    {
+      "name": "Underc0de",
+      "url": "https://underc0de.org",
+      "sector": "cybersecurity/education",
+      "location": "Mendoza"
+    },
+    {
+      "name": "Kafe Sistemas",
+      "url": "https://kafesistemas.com",
+      "sector": "software_development",
+      "location": "Mendoza"
+    },
+    {
+      "name": "NG Soluciones Tecnológicas",
+      "url": "https://ngsoluciones.com",
+      "sector": "it_services",
+      "location": "Mendoza"
+    },
+    {
+      "name": "Arlink",
+      "url": "https://arlink.com.ar",
+      "sector": "technology",
+      "location": "Mendoza"
+    },
+    {
+      "name": "ACP Ingeniería en Sistemas",
+      "url": "https://acpsistemas.com.ar",
+      "sector": "software_development",
+      "location": "Mendoza"
+    },
+    {
+      "name": "Authenware Argentina",
+      "url": "https://authenware.com",
+      "sector": "software/security",
+      "location": "Mendoza"
+    }
+  ]
+}

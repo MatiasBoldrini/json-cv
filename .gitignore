@@ -2,5 +2,20 @@ node_modules/
 .vscode/
 .DS_Store
 temp-resume.html
+_tmp_gen_pdf.js
 *.pdf
 *.html
+
+# Agent - datos generados
+.env
+agent/data/jobs.json
+agent/data/companies.json
+agent/data/applications.json
+agent/data/*.pdf
+
+# Python
+__pycache__/
+*.pyc
+.venv/
+venv/
+*.egg-info/
